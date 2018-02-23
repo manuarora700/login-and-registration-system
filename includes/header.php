@@ -1,3 +1,5 @@
+<?php include("functions/init.php") ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
