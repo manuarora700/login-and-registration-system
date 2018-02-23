@@ -7,5 +7,8 @@
 include("db.php");
 include("functions.php");
 
-echo "IT WORKS!";
+if($con) {
+	echo "DB CONNECCTED";
+
+}
 ?>
