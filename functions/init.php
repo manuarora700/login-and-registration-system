@@ -1,5 +1,4 @@
-<?php
-ob_start(); //Turn on output buffering used for redirections
+<?php ob_start(); //Turn on output buffering used for redirections
 
 session_start();
 
