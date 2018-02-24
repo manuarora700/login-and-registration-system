@@ -3,6 +3,16 @@
 	$con = mysqli_connect('localhost', 'root', "", 'login_db');
 
 
+
+
+	function row_count($result) {
+
+
+		return mysqli_num_rows($result);
+
+
+	}
+
 	function escape($string) {
 
 		global $con;
