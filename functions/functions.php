@@ -1,5 +1,5 @@
 <?php
-
+/***********HELPER FUNCTIONS********/
 function clean($string) {
 
 
@@ -45,6 +45,8 @@ function token_generator() {
 	$token = $_SESSION['token'] = md5(uniqid(mt_rand(), true));
 	return $token;
 }
+
+/*******VALIDATION FUNCTIONS*******/
 
 
 ?>
