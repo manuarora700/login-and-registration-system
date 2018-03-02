@@ -31,7 +31,7 @@
 							<div class="col-lg-12">
 								<form id="register-form" method="post" role="form" >
 									<div class="form-group">
-										<input type="text" name="firstname" id="first_name" tabindex="1" class="form-control" placeholder="First Name" value="" required >
+										<input type="text" name="first_name" id="first_name" tabindex="1" class="form-control" placeholder="First Name" value="" required >
 									</div>
 									<div class="form-group">
 										<input type="text" name="last_name" id="last_name" tabindex="1" class="form-control" placeholder="Last Name" value="" required >

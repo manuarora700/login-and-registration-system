@@ -50,6 +50,9 @@ function token_generator() {
 
 function validate_user_registration() {
 
+	$errors = [];
+	$min = 3;
+	$max = 20;
 
 	if($_SERVER['REQUEST_METHOD'] == "POST") {
 
@@ -61,7 +64,25 @@ function validate_user_registration() {
 		$password	 	= clean($_POST['password']);
 		$confirm_password	 	= clean($_POST['confirm_password']);
 
+	
+		if(strlen($first_name) < $min) {
+			
+			$errors[] = "Your first name cannot be less than {$min} characters";
+		}
 
+		//Not doing for empty firstname b/c HTML5 has it.
+
+		if(strlen($last_name) < $min) {
+			
+			$errors[] = "Your last name cannot be less than {$min} characters";
+		}
+
+		if(!empty($errors)) {
+			foreach ($errors as $error) {
+				# code...
+				echo $error;
+			}
+		} 
 
 	}
 
