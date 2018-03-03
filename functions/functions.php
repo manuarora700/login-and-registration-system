@@ -70,11 +70,22 @@ function validate_user_registration() {
 			$errors[] = "Your first name cannot be less than {$min} characters";
 		}
 
+		if(strlen($first_name) > $max) {
+			
+			$errors[] = "Your first name cannot be greater than {$max} characters";
+		}
+
+
 		//Not doing for empty firstname b/c HTML5 has it.
 
 		if(strlen($last_name) < $min) {
 			
 			$errors[] = "Your last name cannot be less than {$min} characters";
+		}
+
+		if(strlen($last_name) > $max) {
+			
+			$errors[] = "Your last name cannot be legreaterss than {$max} characters";
 		}
 
 		if(!empty($errors)) {
