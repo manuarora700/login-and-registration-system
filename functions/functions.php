@@ -124,6 +124,29 @@ function validate_user_registration() {
 			
 			$errors[] = "Your last name cannot be legreaterss than {$max} characters";
 		}
+
+		if(strlen($username) < $min) {
+			
+			$errors[] = "Your username cannot be lesser than {$min} characters";
+		}
+
+		if(strlen($username) > $max) {
+			
+			$errors[] = "Your username cannot be greater than {$max} characters";
+		}
+
+		if(username_exists($username)) {
+
+				$errors[] = "Sorry, That username is already registered";
+
+
+		}
+		if(email_exists($email)) {
+
+				$errors[] = "Sorry, That email isalready registered";
+
+
+		}
 		if(strlen($email) > $max) {
 			
 			$errors[] = "Your email  cannot be legreaterss than {$max} characters";
