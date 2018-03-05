@@ -201,8 +201,9 @@ function register_user($first_name, $last_name, $username, $email, $password) {
 	} else {
 
 		$password = md5($password);
+		$validation = md5($username + microtime());
 
-		$sql = "INSERT INTO"
+		$sql = "INSERT INTO users VALUES(first_name, last_name, username, email, password, validation_code, 0)"
 	}
 
 
