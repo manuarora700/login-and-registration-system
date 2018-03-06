@@ -174,7 +174,11 @@ function validate_user_registration() {
 
 
 			}
-		} 
+		} else {
+			if(register_user($first_name, $last_name, $username, $email, $password)) {
+				echo "USERS REGISTERED";
+			}
+		}
 
 	} // POST REQUEST
 
@@ -194,7 +198,7 @@ function register_user($first_name, $last_name, $username, $email, $password) {
 
 		return false;
 
-	} else if($username_exists($username)) {
+	} else if (username_exists($username)) {
 
 		return false;
 
@@ -205,12 +209,12 @@ function register_user($first_name, $last_name, $username, $email, $password) {
 
 		$sql = "INSERT INTO users(first_name, last_name, username, email, password, validation_code, active)";
 
-		$sql .= " VALUES('$first_name', '$last_name', '$email', '$password', '$validation_code', '0')";
+		$sql .= " VALUES('$first_name', '$last_name', '$username', '$email', '$password', '$validation_code', '0')";
 
 		$result = query($sql);
 		confirm($result);
 
-		echo "USER REGISTERED";
+		return true;
 	}
 
 
