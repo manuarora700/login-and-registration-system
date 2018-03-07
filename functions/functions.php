@@ -15,7 +15,7 @@ function redirect($location) {
 }
 
 
-function set_message($error_message) {
+function set_message($message) {
 
 
 	if(!empty($message)) {
