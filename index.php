@@ -5,7 +5,8 @@
 
 
 	<div class="jumbotron">
-		<h1 class="text-center"><?php echo display_message(); ?></h1>
+		<?php echo display_message(); ?>
+		<h1 class="text-center"></h1>
 	</div>
 
 	
