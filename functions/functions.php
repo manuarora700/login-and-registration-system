@@ -236,7 +236,7 @@ function register_user($first_name, $last_name, $username, $email, $password) {
 
 		Please click the link below to activate your account
 
-		http://localhost/login/activate.php?email=$email&$code=$validation_code
+		http://localhost/activate.php?email=$email&$code=$validation_code
 		";
 
 		$header = "From: noreply@yourwebsite.com";
@@ -252,9 +252,6 @@ function register_user($first_name, $last_name, $username, $email, $password) {
 
 
 }
-//  else {
-// 	return false;
-// }
 
 
 
@@ -265,9 +262,9 @@ function activate_user() {
 
 		if(isset($_GET['email'])) {
 
-			$email = clean($_GET['email']);
+			echo $email = clean($_GET['email']);
 
-			$validation_code = clean($_GET['code']);
+			echo $validation_code = clean($_GET['code']);
 
 
 		}
