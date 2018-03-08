@@ -200,6 +200,8 @@ function validate_user_registration() {
 
 } // FUNCTION
 
+/*****************REGISTER USER***********/
+
 function register_user($first_name, $last_name, $username, $email, $password) {
 
 	$first_name 	= escape($first_name);
@@ -238,7 +240,7 @@ function register_user($first_name, $last_name, $username, $email, $password) {
 		";
 
 		$header = "From: noreply@yourwebsite.com";
-		
+
 
 		send_email($email, $subject, $msg, $headers);
 
@@ -248,7 +250,29 @@ function register_user($first_name, $last_name, $username, $email, $password) {
 
 
 
-}
 
+}
+//  else {
+// 	return false;
+// }
+
+
+
+/***********ACTIVATE USER FUNCTIONS**********/
+
+function activate_user() {
+	if($_SERVER['REQUEST_METHOD'] == "GET") {
+
+		if(isset($_GET['email'])) {
+
+			$email = clean($_GET['email']);
+
+			$validation_code = clean($_GET['code']);
+
+
+		}
+
+	}
+}
 ?>
 
