@@ -192,6 +192,9 @@ function validate_user_registration() {
 
 				redirect("index.php");
 				
+			} else {
+				set_message("<p class='bg-success text-center'>Sorry, we could not register the user</p>");
+				redirect("index.php");
 			}
 		}
 
@@ -262,10 +265,15 @@ function activate_user() {
 
 		if(isset($_GET['email'])) {
 
-			echo $email = clean($_GET['email']);
+			$email = clean($_GET['email']);
 
-			echo $validation_code = clean($_GET['code']);
+			$validation_code = clean($_GET['code']);
+			$sql = "SELECT id FROM users WHERE email = '".escape($_GET['email'])."' AND validation_code = '".escape($_GET['code'])."' ";
 
+			$result = query($sql);
+			confirm($result);
+
+			echo "<p class='bg-success'>Your account has been activated. Please LOGIN!</p>";
 
 		}
 
