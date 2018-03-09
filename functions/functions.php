@@ -346,7 +346,7 @@ function validate_user_login() {
 
 function login_user($email, $password) {
 
-	$sql = "SELECT password, id FROM users WHERE email = '".escape($email)."'";
+	$sql = "SELECT password, id FROM users WHERE email = '".escape($email)."' AND active = 1";
 	$result = query($sql);
 
 	if(row_count($result) == 1) {
@@ -357,6 +357,7 @@ function login_user($email, $password) {
 
 		if(md5($password) === $db_password) {
 
+			$_SESSION['email'] = $email;
 			return true;
 		}
 		else {
@@ -373,5 +374,20 @@ function login_user($email, $password) {
 	}
 
 } // end of functions
+
+/*********logged in function **********/
+
+function logged_in() {
+
+	if(isset($_SESSION['email'])) {
+
+		return true;
+
+	} else {
+		return false;
+	}
+
+
+}
 ?>
 
