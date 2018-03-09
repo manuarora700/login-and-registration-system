@@ -329,12 +329,42 @@ function validate_user_login() {
 
 
 
-				echo "No errors";
+				if(login_user($email, $password)) {
+					redirect("admin.php");
+				}
+				else {
+					echo validation_errors("Your credentials are not correct");
+				}
 
 
 			}
 
 	}
-}
+} // function
+
+/*********USER LOGIN FUNCTION***********/
+
+function login_user($email, $password) {
+
+	$sql = "SELECT password, id FROM users WHERE email = '".escape($email)."'";
+	$result = query($sql);
+
+	if(row_count($result) == 1) {
+
+		$row = fetch_array($sql);
+
+		$db_password = $row['password'];
+
+		
+
+
+
+		return true;
+
+	} else {
+		return false;
+	}
+
+} // end of functions
 ?>
 
