@@ -275,7 +275,7 @@ function activate_user() {
 
 			if(row_count($result) == 1) {
 
-				$sql2 = "UPDATE users SET active = 1, validation_code = 0 WHERE email = '".escape('email')."' AND validation_code = '".escape($validation_code)."'";
+				$sql2 = "UPDATE users SET active = 1, validation_code = 0 WHERE email = '".escape($email)."' AND validation_code = '".escape($validation_code)."'";
 
 				$result2 = query($sql2);
 				confirm($result2);
