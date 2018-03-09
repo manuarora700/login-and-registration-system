@@ -281,6 +281,14 @@ function activate_user() {
 				confirm($result2);
 				set_message("<p class='bg-success'>Your account has been activated. Please LOGIN!</p>");
 				redirect("login.php");
+			} else {
+
+
+				set_message("<p class='bg-danger'> Sorry, Your account could NOT be activated. Please REGISTER AGAIN!</p>");
+				redirect("login.php");
+
+
+
 			}
 		} 
 
