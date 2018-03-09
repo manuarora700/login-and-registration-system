@@ -133,7 +133,7 @@ function validate_user_registration() {
 
 		if(strlen($last_name) > $max) {
 			
-			$errors[] = "Your last name cannot be legreaterss than {$max} characters";
+			$errors[] = "Your last name cannot be greater than {$max} characters";
 		}
 
 		if(strlen($username) < $min) {
@@ -160,7 +160,7 @@ function validate_user_registration() {
 		}
 		if(strlen($email) > $max) {
 			
-			$errors[] = "Your email  cannot be legreaterss than {$max} characters";
+			$errors[] = "Your email  cannot be greater than {$max} characters";
 		}
 		if($password !== $confirm_password) {
 			$errors[] = "Passwords donot match";
@@ -351,11 +351,18 @@ function login_user($email, $password) {
 
 	if(row_count($result) == 1) {
 
-		$row = fetch_array($sql);
+		$row = fetch_array($result);
 
 		$db_password = $row['password'];
 
-		
+		if(md5($password) === $db_password) {
+
+			return true;
+		}
+		else {
+			return false;
+		}
+
 
 
 
