@@ -273,9 +273,12 @@ function activate_user() {
 			$result = query($sql);
 			confirm($result);
 
-			echo "<p class='bg-success'>Your account has been activated. Please LOGIN!</p>";
+			if(row_count($result) == 1) {
 
-		}
+				$sql = "UPDATE users SET active = 1, validation_code = 0 WHERE email = '".escape('email')."'";
+			echo "<p class='bg-success'>Your account has been activated. Please LOGIN!</p>";
+			}
+		} 
 
 	}
 }
