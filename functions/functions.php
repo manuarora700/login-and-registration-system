@@ -306,6 +306,8 @@ function validate_user_login() {
 
 		$email 		= clean($_POST['email']);
 		$password 	= clean($_POST['password']);
+		$remember   = clean(isset($_POST['remember']));
+
 
 
 		if(empty($email)) {
@@ -329,7 +331,7 @@ function validate_user_login() {
 
 
 
-				if(login_user($email, $password)) {
+				if(login_user($email, $password, $redirect)) {
 					redirect("admin.php");
 				}
 				else {
@@ -357,6 +359,14 @@ function login_user($email, $password) {
 
 		if(md5($password) === $db_password) {
 
+
+			if($remember == "on") {
+
+				setcookie('email', $email, time() + 60);
+
+			}
+
+
 			$_SESSION['email'] = $email;
 			return true;
 		}
@@ -379,7 +389,7 @@ function login_user($email, $password) {
 
 function logged_in() {
 
-	if(isset($_SESSION['email'])) {
+	if(isset($_SESSION['email']) || isset($_COOKIE['email'])) {
 
 		return true;
 
