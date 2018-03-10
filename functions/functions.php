@@ -306,7 +306,7 @@ function validate_user_login() {
 
 		$email 		= clean($_POST['email']);
 		$password 	= clean($_POST['password']);
-		$remember   = clean(isset($_POST['remember']));
+		$remember   = isset($_POST['remember']);
 
 
 
@@ -331,7 +331,7 @@ function validate_user_login() {
 
 
 
-				if(login_user($email, $password, $redirect)) {
+				if(login_user($email, $password, $remember)) {
 					redirect("admin.php");
 				}
 				else {
@@ -346,7 +346,7 @@ function validate_user_login() {
 
 /*********USER LOGIN FUNCTION***********/
 
-function login_user($email, $password) {
+function login_user($email, $password, $remember) {
 
 	$sql = "SELECT password, id FROM users WHERE email = '".escape($email)."' AND active = 1";
 	$result = query($sql);
@@ -362,7 +362,7 @@ function login_user($email, $password) {
 
 			if($remember == "on") {
 
-				setcookie('email', $email, time() + 60);
+				setcookie('email', $email, time() + 86400);
 
 			}
 
