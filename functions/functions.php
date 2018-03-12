@@ -403,5 +403,16 @@ function logged_in() {
 
 /*********Recover password*********/
 
+function recover_password() {
+
+	if($_SERVER['REQUEST_METHOD'] == "POST") {
+
+		echo "It works";
+
+	}
+
+
+}
+
 ?>
 
