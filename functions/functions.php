@@ -398,6 +398,10 @@ function logged_in() {
 	}
 
 
-}
+} // function
+
+
+/*********Recover password*********/
+
 ?>
 
