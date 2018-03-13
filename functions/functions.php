@@ -407,12 +407,16 @@ function recover_password() {
 
 	if($_SERVER['REQUEST_METHOD'] == "POST") {
 
-		echo "It works";
+		if(isset($_SESSION['token']) && $_POST['token'] == $_SESSION['token']) {
+			echo "It works";
 
-	}
+		}
+	
+
+	} // post request
 
 
-}
+} // functionss
 
 ?>
 
