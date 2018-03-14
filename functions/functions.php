@@ -50,7 +50,7 @@ function validation_errors($error_message) {
 
 $error_message = <<<DELIMITER
 
-<div class="alert alert-warning alert-dismissible" role="alert">
+<div class="alert alert-danger alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <strong>Warning!</strong> $error_message
 </div>
@@ -415,6 +415,12 @@ function recover_password() {
 
 				$validation_code = md5($email, microtime());
 				setcookie('temp_access_code', $validation_code, time() + 60);
+
+
+				$sql = "UPDATE users SET validation_code = '" . escape($validation_code)."' WHERE email = '".escape($email)."'";
+
+				$result = query($sql);
+				confirm($result);
 
 				$subject = "Please reset your password";
 				$message = "Here is your password reset code {$validation_code}
