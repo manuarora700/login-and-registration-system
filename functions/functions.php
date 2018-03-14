@@ -414,6 +414,8 @@ function recover_password() {
 			if(email_exists($email)) {
 
 				$validation_code = md5($email, microtime());
+				setcookie('temp_access_code', $validation_code, time() + 60);
+
 				$subject = "Please reset your password";
 				$message = "Here is your password reset code {$validation_code}
 
@@ -425,9 +427,13 @@ function recover_password() {
 				$headers = "From: noreply@yourwebsite.com";
 				send_email($email, $subject, $message, $headers);
 
+			} else {
+				echo validation_errors("This email does not exist");
 			}
 
-		} // token checks
+		} else {
+			redirect("index.php");
+		} 		// token checks
 	
 
 	} // post request
