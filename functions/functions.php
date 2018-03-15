@@ -461,11 +461,28 @@ function recover_password() {
 function validate_code() {
 
 	if(isset($_COOKIE['temp_access_code'])) {
-		if($_SERVER['REQUEST_METHOD'] == "GET") {
 
-			if(isset($_GET['email']) && isset($_GET['code']))
 
-		}
+			if(!isset($_GET['email']) && !isset($_GET['code'])) {
+
+				redirect("index.php");
+
+			} else if (empty($_GET['email']) || empty($_GET['code'])) {
+
+				redirect("index.php");
+
+			} else {
+
+
+				if(isset($_POST['code'])) {
+
+					echo "getting post from form";
+
+				}
+
+
+			}
+
 
 	} else {
 		set_message("<p class='bg-danger text-center'>Sorry, your validation cookie was expired</p>");
