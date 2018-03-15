@@ -476,7 +476,26 @@ function validate_code() {
 
 				if(isset($_POST['code'])) {
 
-					echo "getting post from form";
+					$email = clean($_GET['email']);
+
+					$validation_code = clean($_POST['code']);
+
+
+					$sql = "SELECT id FROM users WHERE validation_code = '".escape($validation_code)."' AND email = '".escape($email)."'";
+
+					$result = query($sql);
+					confirm($result);
+
+					if(row_count($result) == 1) {
+
+
+						redirect("reset.php");
+
+
+					} else {
+						echo validation_errors("Sorry, Wrong validation code.");
+					}
+
 
 				}
 
