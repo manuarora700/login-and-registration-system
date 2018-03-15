@@ -438,10 +438,10 @@ function recover_password() {
 
 
 				}
-				set_message("<p class='bg-success'>Please check your email or spam folder for a password reset code.</p>");
+				set_message("<p class='bg-success text-center'>Please check your email or spam folder for a password reset code.</p>");
 				redirect("index.php");
 
-				
+
 			} else {
 				echo validation_errors("This email does not exist");
 			}
@@ -455,6 +455,25 @@ function recover_password() {
 
 
 } // functionss
+
+/*********code validation*********/
+
+function validate_code() {
+
+	if(isset($_COOKIE['temp_access_code'])) {
+		if($_SERVER['REQUEST_METHOD'] == "GET") {
+
+			if(isset($_GET['email']) && isset($_GET['code']))
+
+		}
+
+	} else {
+		set_message("<p class='bg-danger text-center'>Sorry, your validation cookie was expired</p>");
+		redirect("recover.php");
+	}
+
+}
+
 
 ?>
 
