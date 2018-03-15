@@ -431,15 +431,17 @@ function recover_password() {
 				http://localhost/code.php?email=$email=$email&code=$validation_code
 				";
 				$headers = "From: noreply@yourwebsite.com";
-				if(send_email($email, $subject, $message, $headers)) {
+				if(!send_email($email, $subject, $message, $headers)) {
 
-				} else {
 
 					echo validation_errors("Email could not be sent");
 
 
 				}
+				set_message("<p class='bg-success'>Please check your email or spam folder for a password reset code.</p>");
+				redirect("index.php");
 
+				
 			} else {
 				echo validation_errors("This email does not exist");
 			}
