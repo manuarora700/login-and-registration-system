@@ -515,13 +515,23 @@ function validate_code() {
 /************Password Reset function************/
 function password_reset() {
 
+	if(isset($_COOKIE['temp_access_code'])) {
+
+
+
+	
 	if(isset($_GET['email']) && isset($_GET['email'])) {
 
 		echo "It works";
 
+		}
+
+	} else {
+
+		set_message("<p class='bg-danger text-center'>Sorry, Your time has expired</p>");
+
+
 	}
-
 }
-
 ?>
 
