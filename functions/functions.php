@@ -489,7 +489,7 @@ function validate_code() {
 					if(row_count($result) == 1) {
 
 
-
+						setcookie('temp_access_code', $validation_code, time() + 300);
 
 						redirect("reset.php?email=$email&code=$validation_code");
 
@@ -510,8 +510,18 @@ function validate_code() {
 		redirect("recover.php");
 	}
 
-}
+} // function
 
+/************Password Reset function************/
+function password_reset() {
+
+	if(isset($_GET['email']) && isset($_GET['email'])) {
+
+		echo "It works";
+
+	}
+
+}
 
 ?>
 
