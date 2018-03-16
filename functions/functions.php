@@ -489,7 +489,9 @@ function validate_code() {
 					if(row_count($result) == 1) {
 
 
-						redirect("reset.php");
+
+
+						redirect("reset.php?email=$email&code=$validation_code");
 
 
 					} else {
