@@ -518,20 +518,21 @@ function password_reset() {
 	if(isset($_COOKIE['temp_access_code'])) {
 
 
-
+		if(isset($_SESSION['token']) && $_POST['token'] == $_SESSION['token']) {
 	
-	if(isset($_GET['email']) && isset($_GET['email'])) {
+			if(isset($_GET['email']) && isset($_GET['email'])) {
 
-		echo "It works";
+		
 
 		}
 
-	} else {
+	} 
+	}else {
 
 		set_message("<p class='bg-danger text-center'>Sorry, Your time has expired</p>");
+		redirect("recover.php");
 
-
-	}
+		}
 }
 ?>
 
