@@ -451,6 +451,11 @@ function recover_password() {
 		} 		// token checks
 	
 
+		if(isset($_POST['cancel-submit'])) {
+
+			redirect("login.php");
+
+		}
 	} // post request
 
 
