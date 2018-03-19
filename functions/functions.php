@@ -532,10 +532,13 @@ function password_reset() {
 
 
 			 		$updated_password = md5($_POST['password']);
-				$sql = "UPDATE users SET password='".escape($updated_password)."' WHERE email ='".escape($_GET['email'])."'";
+				$sql = "UPDATE users SET password='".escape($updated_password)."', validation_code = 0 WHERE email ='".escape($_GET['email'])."'";
 				
 				$result = query($sql);
-				confirm($result);	
+				confirm($result);
+
+				set_message("<p class='bg-success'> password changed successfully, Please LOGIN</p>");
+				redirect("login.php");
 				}
 			}
 		}
