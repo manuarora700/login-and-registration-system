@@ -522,7 +522,7 @@ function password_reset() {
 		if(isset($_GET['email']) && isset($_GET['code'])) {
 
 
-			if(isset($_SESSION['token']) && $_POST['token'] == $_SESSION['token']) {
+			if(isset($_SESSION['token']) && isset($_POST['token']) && $_POST['token'] == $_SESSION['token']) {
 	
 			
 
