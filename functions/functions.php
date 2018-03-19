@@ -529,8 +529,13 @@ function password_reset() {
 	
 			
 			 	if($_POST['password'] == $_POST['confirm_password']) {
-				// $sql = "UPDATE users SET password='".escape($_POST['password'])."' WHERE email ='".escape($email)."'";
-				echo "Passwords match";
+
+
+			 		$updated_password = md5($_POST['password']);
+				$sql = "UPDATE users SET password='".escape($updated_password)."' WHERE email ='".escape($_GET['email'])."'";
+				
+				$result = query($sql);
+				confirm($result);	
 				}
 			}
 		}
