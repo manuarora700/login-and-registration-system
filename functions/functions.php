@@ -522,12 +522,17 @@ function password_reset() {
 		if(isset($_GET['email']) && isset($_GET['code'])) {
 
 
-			if(isset($_SESSION['token']) && isset($_POST['token']) && $_POST['token'] == $_SESSION['token']) {
+			if(isset($_SESSION['token']) && isset($_POST['token'])) {
+
+
+			 if($_POST['token'] == $_SESSION['token']) {
 	
 			
-
-		
-
+			 	if($_POST['password'] == $_POST['confirm_password']) {
+				// $sql = "UPDATE users SET password='".escape($_POST['password'])."' WHERE email ='".escape($email)."'";
+				echo "Passwords match";
+				}
+			}
 		}
 
 	} 
