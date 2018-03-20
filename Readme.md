@@ -53,3 +53,5 @@ reset.php
 1. All the passwords are ```md5()``` secured which is next level encryption. 
 
 1. Sessions and cookies are used to make sure that user does not stay more than 5 minutes on the recover password page.
+
+1. It can be forked and used into any website directly.
