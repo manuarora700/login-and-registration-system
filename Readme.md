@@ -5,6 +5,8 @@ Login and Registration System is build using **HTML5, CSS3, JavaScript, jQuery, 
 
 **The project includes:**
 * HTML5 markup
+* JavaScript for interactivity
+* jQuery for easy DOM manipulation
 * CSS3 Styling
 * Bootstrap for responsive design
 * AJAX for dynamic page loading
