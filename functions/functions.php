@@ -92,14 +92,14 @@ function validate_user_registration() {
 			foreach ($errors as $error) {
 				# code...
 
-$message = <<<DELIMITER
+		 echo '
 
 <div class="alert alert-warning alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>Warning!</strong> $error;
+  <strong>Warning!</strong>' . $error . ';
 </div>
-DELIMITER; //MUST BE NO SPACE IN THE BEGINNIGN OF DELIMITER
-echo $message;
+';
+
 			}
 		} 
 
