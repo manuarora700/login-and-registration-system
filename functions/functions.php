@@ -15,7 +15,7 @@ function redirect($location) {
 }
 
 
-function set_message($message) {
+function set_message($error_message) {
 
 
 	if(!empty($message)) {
@@ -44,6 +44,20 @@ function token_generator() {
 	//Advanced stuff but USEFUL
 	$token = $_SESSION['token'] = md5(uniqid(mt_rand(), true));
 	return $token;
+}
+
+function validation_errors($error_message) {
+
+$error_message = <<<DELIMITER
+
+<div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Warning!</strong> $error_message
+</div>
+DELIMITER;
+
+return $error_message;
+
 }
 
 /*******VALIDATION FUNCTIONS*******/
@@ -87,18 +101,31 @@ function validate_user_registration() {
 			
 			$errors[] = "Your last name cannot be legreaterss than {$max} characters";
 		}
+		if(strlen($email) > $max) {
+			
+			$errors[] = "Your email  cannot be legreaterss than {$max} characters";
+		}
+		if($password !== $confirm_password) {
+			$errors[] = "Passwords donot match";
+		}
+		
 
 		if(!empty($errors)) {
 			foreach ($errors as $error) {
 				# code...
 
-		 echo '
+// 		 echo '
 
-<div class="alert alert-warning alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>Warning!</strong>' . $error . ';
-</div>
-';
+// <div class="alert alert-warning alert-dismissible" role="alert">
+//   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+//   <strong>Warning!</strong>' . $error . ';
+// </div>		
+
+// ';			
+				echo validation_errors($error);
+
+
+
 
 			}
 		} 
