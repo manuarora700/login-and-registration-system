@@ -268,7 +268,7 @@ function activate_user() {
 			$email = clean($_GET['email']);
 
 			$validation_code = clean($_GET['code']);
-			$sql = "SELECT id FROM users WHERE email = '".escape($_GET['email'])."' AND validation_code = '".escape($_GET['code'])."' ";
+			$sql = "SELECT id FROM users WHERE email = '".escape($_GET['email'])."' AND validatin_code = '".escape($_GET['code'])."' ";
 
 			$result = query($sql);
 			confirm($result);
@@ -413,7 +413,7 @@ function recover_password() {
 
 			if(email_exists($email)) {
 
-				$validation_code = md5($email, microtime());
+				$validation_code = md5($email + microtime());
 				setcookie('temp_access_code', $validation_code, time() + 60);
 
 
@@ -431,7 +431,14 @@ function recover_password() {
 				http://localhost/code.php?email=$email=$email&code=$validation_code
 				";
 				$headers = "From: noreply@yourwebsite.com";
-				send_email($email, $subject, $message, $headers);
+				if(send_email($email, $subject, $message, $headers)) {
+
+				} else {
+
+					echo validation_errors("Email could not be sent");
+
+
+				}
 
 			} else {
 				echo validation_errors("This email does not exist");
