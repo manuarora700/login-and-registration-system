@@ -28,15 +28,15 @@ Login and Registration System is build using **HTML5, CSS3, JavaScript, jQuery, 
 	1. bootstrap.js
 	1. jquery.js
 	1. scripts.js
-activate.php
-admin.php
-code.php
-index.php
-login.php
-logout.php
-recover.php
-register.php
-reset.php
+1. activate.php
+1. admin.php
+1. code.php
+1. index.php
+1. login.php
+1. logout.php
+1. recover.php
+1. register.php
+1. reset.php
 
 ## Features of Login and Registration System
 
